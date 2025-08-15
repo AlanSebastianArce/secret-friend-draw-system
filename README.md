@@ -23,7 +23,7 @@ Un sistema web interactivo para realizar sorteos de "Amigo Secreto" de forma fá
 
 ## 🚀 Demo en Vivo
 
-[Ver Demo](https://github.com/AlanSebastianArce/secret-friend-draw-system) _(Agrega aquí el link cuando lo subas)_
+[Ver Demo](https://github.com/AlanSebastianArce/secret-friend-draw-system) _(https://alansebastianarce.github.io/secret-friend-draw-system/)_
 
 ## 🛠️ Tecnologías Utilizadas
 
