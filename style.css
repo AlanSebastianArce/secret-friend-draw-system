@@ -1,0 +1,538 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.audio-header-section {
+    background-color: #e7d5a9;
+    width: 100%;
+}
+
+/* Controles de audio */
+.audio-controls {
+    position: left;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0.8;
+    width: 350px;
+}
+
+.audio-controls:hover {
+    opacity: 1;
+}
+
+/* Header con título */
+.header-banner {
+    text-align: center;
+    padding: 20px 20px 30px;
+    position: relative;
+    background: transparent;
+}
+
+.main-title {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: bold;
+    color: #00293e;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-style: italic;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.header-banner img {
+    max-width: auto;
+    height: auto;
+}
+
+/* Panel principal del juego */
+.game-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 20px 20px 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+
+/* Panel izquierdo */
+.central-left-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 40px 35px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 400px;
+    min-height: 500px;
+}
+
+.left-panel-caption {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #5a67d8;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* Contenedor de inputs y botones */
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input para nombres */
+.input-name {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #ffffff;
+}
+
+.input-name:focus {
+    border-color: #5a67d8;
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.1);
+}
+
+.input-name::placeholder {
+    color: #a0aec0;
+}
+
+/* Botón Añadir */
+.button-add {
+    background: #8cb5eb;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(160, 174, 192, 0.3);
+}
+
+.button-add:hover {
+    background: #4f73aa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(160, 174, 192, 0.4);
+}
+
+/* Botón Sortear */
+.button-draw {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 25px rgba(255, 107, 107, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.button-draw:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 107, 107, 0.4);
+}
+
+.button-draw img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Botón Reiniciar */
+.button-draw-restart {
+    background: rgb(150, 113, 120);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(113, 128, 150, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button-draw-restart:hover:not(:disabled) {
+    background: rgb(99, 12, 39);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(113, 128, 150, 0.4);
+}
+
+.button-draw-restart:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.button-draw-restart img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Resultado del sorteo */
+.result-display {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.3);
+    display: none;
+}
+
+.result-display.show {
+    display: block;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.result-text {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.winner-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Panel derecho - Pantalla de participantes */
+.central-right-panel {
+    background: #1a1a1a;
+    border-radius: 25px;
+    padding: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 350px;
+    min-height: 500px;
+    overflow: hidden;
+    border: 3px solid #2d3748;
+}
+
+/* Header de la pantalla */
+.screen-header {
+    background: #000000;
+    color: #00ff88;
+    padding: 15px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #2d3748;
+}
+
+/* Contenido de la pantalla */
+.screen-content {
+    padding: 25px 20px;
+    color: #a0aec0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    min-height: 400px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #2d3748 100%);
+}
+
+.screen-content .participant {
+    padding: 8px 15px;
+    margin: 8px 0;
+    background: rgba(0, 255, 136, 0.1);
+    border-left: 3px solid #00ff88;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.screen-content .participant:hover {
+    background: rgba(0, 255, 136, 0.2);
+    transform: translateX(5px);
+}
+
+/* SECCIÓN MUSIC CREDITS CONTAINER */
+.music-credits-container {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* SVG Zigzag superior de music-credits */
+.zigzag-top-credits {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    width: 100%;
+    z-index: 1;
+    display: block;
+    pointer-events: none;
+}
+
+/* Créditos de música */
+.music-credits {
+    background: linear-gradient(135deg, 
+        rgba(231, 213, 169, 0.9) 0%,
+        rgba(200, 180, 140, 0.85) 30%,
+        rgba(102, 126, 234, 0.8) 70%,
+        rgba(118, 75, 162, 0.85) 100%
+    );
+    backdrop-filter: blur(10px);
+    padding: 35px 30px 25px 30px;
+    margin: 0;
+    text-align: center;
+    font-size: 1rem;
+    color: #2d3748;
+    font-weight: 600;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.music-credits p {
+    margin: 8px 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+    color: #1a202c;
+}
+
+.music-credits a {
+    color: #1a237e;
+    text-decoration: none;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    border: 2px solid #1a237e;
+    box-shadow: 0 2px 8px rgba(26, 35, 126, 0.3);
+}
+
+.music-credits a:hover {
+    color: #ffffff;
+    background: #1a237e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(26, 35, 126, 0.5);
+}
+
+/* SVG Zigzag inferior */
+.zigzag-bottom {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    width: 100%;
+    z-index: 10;
+    display: block;
+    pointer-events: none;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, 
+        rgba(56, 78, 126, 0.95) 0%,
+        rgba(102, 126, 234, 0.9) 30%,
+        rgba(118, 75, 162, 0.95) 70%,
+        rgba(79, 46, 120, 0.98) 100%
+    );
+    backdrop-filter: blur(20px);
+    padding: 40px 0 35px 0;
+    box-shadow: 0 -5px 25px rgba(102, 126, 234, 0.3);
+    position: relative;
+    margin-top: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.footer-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 8px 0;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-license {
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 12px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilos para el enlace de GitHub con carpeta emoji */
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 0.95rem;
+    gap: 8px;
+}
+
+/* Forzar grosor extra para el nombre de GitHub */
+.github-link .github-name {
+    font-weight: 900 !important; /* Máximo grosor */
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Asegurar que el enlace completo tenga grosor */
+.github-link {
+    font-weight: 800; /* Más grueso que el texto normal */
+}
+
+/* Comparación: ALURA text tiene menos grosor */
+.footer-text {
+    font-weight: 500; /* Menos grueso para que se note la diferencia */
+}
+
+.github-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.github-link:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Animación de pulso para el hover */
+@keyframes githubPulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3), 0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3), 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3), 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+.github-link:hover {
+    animation: githubPulse 1.5s infinite;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.button-draw:active {
+    animation: pulse 0.3s ease-in-out;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .game-panel {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 20px 15px;
+    }
+    
+    .central-left-panel,
+    .central-right-panel {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .audio-controls {
+        position: static;
+        display: block;
+        margin: 0 auto;
+        width: calc(100% - 40px);
+        max-width: 350px;
+    }
+}
